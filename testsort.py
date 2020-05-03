@@ -7,14 +7,15 @@ import random
 import time
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-from sort import exchangesort, selectionsort, bubblesort
+from sort import exchangesort, selectionsort, bubblesort, quicksort, mergesort
+from util import merge
 
 
 # Get user input to determine range of integers (1 to N) and desired
 # sorting method (algorithm).
 N = int(input("Enter number of integers: "))
-method_msg = "Enter sorting method:\n(b)ubble\n(i)nsertion\n(m)erge \
-              \n(q)uick\n(s)election\n(e)xchange: "
+method_msg = "Enter sorting method:\n(b)ubble\n(e)xchange\n(i)nsertion \
+              \n(m)erge\n(q)uick\n(s)election:\n"
 method = input(method_msg)
 
 # Build and randomly shuffle list of integers.
@@ -29,6 +30,12 @@ if method == "b":
 elif method == "e":
     title = "Exchange sort"
     generator = exchangesort(l)
+elif method == "m":
+    title = "Merge sort"
+    generator = mergesort(l, 0, N - 1)
+elif method == "q":
+    title = "Quick sort"
+    generator = quicksort(l, 0, N - 1)
 elif method == "s":
     title = "Selection sort"
     generator = selectionsort(l)
@@ -42,7 +49,7 @@ else:
 fig, ax = plt.subplots()
 ax.set_title(title)
 
-colormap = plt.cm.get_cmap('RdYlBu_r')
+colormap = plt.cm.get_cmap('cool')
 # Needed for 1st frame
 color_nums = [x / max(l) for x in l]
 colors = colormap(color_nums)
