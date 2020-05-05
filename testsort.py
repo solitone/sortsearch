@@ -7,7 +7,7 @@ import random
 import time
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-from sort import exchangesort, selectionsort, bubblesort, quicksort, mergesort
+from sort import exchangesort, selectionsort, bubblesort, quicksort, mergesort, insertionsort
 from util import merge
 
 
@@ -30,6 +30,9 @@ if method == "b":
 elif method == "e":
     title = "Exchange sort"
     generator = exchangesort(l)
+elif method == "i":
+    title = "Insertion sort"
+    generator = insertionsort(l)
 elif method == "m":
     title = "Merge sort"
     generator = mergesort(l, 0, N - 1)

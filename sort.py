@@ -61,6 +61,22 @@ def bubblesort(list: list) -> (int, int):
             break
     #print("Comparisons: {}, swaps: {}".format(n_compars, n_swaps))
 
+def insertionsort(list: list) -> (int, int):
+    """
+    ...
+    :param list: unsorted list.
+    :return: tuple (n_compars, n_swaps), counting number of comparisons and number of swaps occurred.
+    """
+    n_compars, n_swaps = 0, 0
+    length = len(list)
+    for i in range(1, length):
+        n_compars += 1
+        # Python does not need a second variable for indexing:
+        while i > 0 and list[i-1] > list[i]:
+            n_swaps += 1
+            list[i-1], list[i] = list[i], list[i-1]
+            i -= 1
+            yield (n_compars, n_swaps)
 
 def quicksort(list: list, lo: int, hi: int) -> (int, int):
     """
