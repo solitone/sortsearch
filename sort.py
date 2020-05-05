@@ -77,6 +77,7 @@ def insertionsort(list: list) -> (int, int):
             list[i-1], list[i] = list[i], list[i-1]
             i -= 1
             yield (n_compars, n_swaps)
+            n_compars += 1
 
 def quicksort(list: list, lo: int, hi: int) -> (int, int):
     """
