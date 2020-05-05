@@ -33,7 +33,6 @@ def selectionsort(list: list) -> (int, int):
             n_compars += 1
             if list[smallest] > list[j]:
                 smallest = j
-                swapNeeded = True
             yield (n_compars, n_swaps)
         n_swaps += 1
         list[i], list[smallest] = list[smallest], list[i]
