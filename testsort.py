@@ -49,7 +49,7 @@ else:
 ## Visualise list while being sorted
 
 # Initialize figure and axis.
-fig, ax = plt.subplots()
+fig, ax = plt.subplots() # returns a figure and an axes object
 ax.set_title(title)
 
 colormap = plt.cm.get_cmap('cool')
@@ -63,7 +63,7 @@ orderd_colors = colormap(orderd_color_nums)
 # Initialize a bar plot. Note that matplotlib.pyplot.bar() returns a
 # list of rectangles (with each bar in the bar plot corresponding
 # to one rectangle), which we store in bar_rects.
-bar_rects = ax.bar(range(len(l)), l, align="edge", color=colors)
+bar_rects = ax.bar(range(len(l)), l, width=0.9, align="edge", color=colors)
 
 # Set axis limits. Set y axis upper limit high enough that the tops of
 # the bars won't overlap with the text label.
@@ -81,6 +81,7 @@ def update_fig(count_tuple, list, rects):
     for rect, val in zip(rects, list):
         rect.set_height(val)
         rect.set_color(orderd_colors[val-1])
+        rect.set_edgecolor(None)
     labelCompars.set_text("# of comparisons: {}".format(count_tuple[0]))
     labelSwaps.set_text("# of swaps: {}".format(count_tuple[1]))
 
